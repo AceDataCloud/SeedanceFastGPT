@@ -1,0 +1,8 @@
+{
+  "prompt": "A teal paper cube slowly rotates on a cream studio background. Static camera, no text.",
+  "model": "doubao-seedance-2-0-mini-260615",
+  "resolution": "480p",
+  "ratio": "16:9",
+  "duration": 4,
+  "generate_audio": false
+}
