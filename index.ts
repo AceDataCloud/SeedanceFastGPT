@@ -84,13 +84,13 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataSeedance',
-    version: '0.2.1',
-    name: { en: 'Ace Data Cloud Seedance', 'zh-CN': 'Ace Data Cloud Seedance 视频' },
+    version: '0.2.2',
+    name: { en: 'Seedance by Ace Data Cloud', 'zh-CN': 'Seedance 视频 · Ace Data Cloud' },
     description: {
-      en: 'Generate video with Seedance through Ace Data Cloud and retrieve the same task.',
-      'zh-CN': '通过 Ace Data Cloud Seedance 视频生成并查询同一任务。'
+      en: 'Generate Seedance videos through Ace Data Cloud and retrieve completed video from the same task.',
+      'zh-CN': '通过 Ace Data Cloud 生成 Seedance 视频，并查询同一任务的视频结果。'
     },
-    versionDescription: { en: 'Align API limits and task status handling', 'zh-CN': '对齐 API 限制和任务状态处理' },
+    versionDescription: { en: 'Service-first discovery and application token onboarding', 'zh-CN': '服务名优先的发现入口与应用令牌指引' },
     author: 'Ace Data Cloud',
     repoUrl: 'https://github.com/AceDataCloud/SeedanceFastGPT',
     tutorialUrl: 'https://github.com/AceDataCloud/SeedanceFastGPT#quick-start',
@@ -101,21 +101,21 @@ export default defineToolSet({
   children: [
     {
       id: 'generate',
-      name: { en: 'Generate video', 'zh-CN': '生成Seedance 视频' },
+      name: { en: 'Generate Seedance video', 'zh-CN': '生成Seedance 视频' },
       description: { en: 'Submit one Seedance generation and return its task ID.', 'zh-CN': '提交一次Seedance 视频生成并返回任务 ID。' },
       toolDescription: 'Submit once. Do not call again to check a pending task.',
       handler: generateHandler
     },
     {
       id: 'retrieveTasks',
-      name: { en: 'Retrieve tasks', 'zh-CN': '批量查询任务' },
+      name: { en: 'Retrieve Seedance tasks', 'zh-CN': '批量查询任务' },
       description: { en: 'Read existing task IDs without submitting a generation.', 'zh-CN': '只读查询已有任务 ID，不重新生成。' },
       toolDescription: 'Use only existing task IDs. Each item retains its own pending, failed, or succeeded state.',
       handler: batchHandler
     },
     {
       id: 'retrieveTask',
-      name: { en: 'Retrieve task', 'zh-CN': '查询任务' },
+      name: { en: 'Retrieve Seedance task', 'zh-CN': '查询任务' },
       description: { en: 'Read the status and result of an existing Seedance task.', 'zh-CN': '读取已有Seedance 视频任务的状态和结果。' },
       toolDescription: 'Read an existing task by ID without submitting a new generation.',
       handler: retrieveHandler
