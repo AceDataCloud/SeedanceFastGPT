@@ -6,6 +6,8 @@ import {
   type SecretSchemaMetaType
 } from '@fastgpt-plugin/sdk-factory';
 import z from 'zod';
+import { referenceInputs } from './src/references.ts';
+import { MODEL_HELP } from './src/model-catalog.ts';
 
 import { submitGeneration, retrieveTask, retrieveTasks } from './src/client.ts';
 import type { TaskResult } from './src/client.ts';
@@ -29,8 +31,9 @@ const outputSchema = z.object({
 
 const generateHandler = createToolHandler({
   inputSchema: z.object({
+    ...referenceInputs,
     prompt: z.string().trim().min(1).max(10000).meta({ title: 'Prompt', isToolParam: true } satisfies InputSchemaMetaType),
-    model: z.string().trim().min(1).max(256).default('doubao-seedance-2-0-mini-260615').meta({ title: 'Model' } satisfies InputSchemaMetaType),
+    model: z.string().trim().min(1).max(256).default('doubao-seedance-2-0-mini-260615').meta({ title: 'Model', description: MODEL_HELP } satisfies InputSchemaMetaType),
     resolution: z.string().trim().min(1).max(256).default('480p').meta({ title: 'Resolution' } satisfies InputSchemaMetaType),
     ratio: z.string().trim().min(1).max(256).default('16:9').meta({ title: 'Ratio' } satisfies InputSchemaMetaType),
     duration: z.number().int().min(-1).max(30).default(4).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
@@ -84,7 +87,7 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataSeedance',
-    version: '0.2.2',
+    version: '0.2.3',
     name: { en: 'Seedance by Ace Data Cloud', 'zh-CN': 'Seedance 视频 · Ace Data Cloud' },
     description: {
       en: 'Generate Seedance videos through Ace Data Cloud and retrieve completed video from the same task.',

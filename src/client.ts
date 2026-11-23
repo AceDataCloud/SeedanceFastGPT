@@ -1,3 +1,5 @@
+import { referencePayload, type ReferenceInput } from './references.ts';
+
 export type TaskResult = {
   taskId: string;
   traceId: string;
@@ -14,7 +16,7 @@ export type GenerateInput = {
   ratio: string;
   duration: number;
   generate_audio: boolean;
-};
+} & ReferenceInput;
 
 const GENERATE_PATH = '/seedance/videos';
 const TASK_PATH = '/seedance/tasks';
@@ -105,7 +107,7 @@ async function post(path: string, apiKey: string, payload: Record<string, unknow
 
 export async function submitGeneration(input: GenerateInput, apiKey: string): Promise<TaskResult> {
   const payload: Record<string, unknown> = {
-    content: [{ type: 'text', text: input.prompt }],
+    ...referencePayload(input),
     model: input.model,
     resolution: input.resolution,
     ratio: input.ratio,

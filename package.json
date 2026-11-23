@@ -1,6 +1,6 @@
 {
   "name": "fastgpt-plugin-acedata-seedance",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Ace Data Cloud Seedance tools for FastGPT",
   "type": "module",
   "main": "dist/index.js",
@@ -9,7 +9,9 @@
     "check": "fastgpt-plugin check --entry . --output ./dist",
     "pack": "fastgpt-plugin pack",
     "test": "vitest run",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "pretest": "node scripts/sync-model-catalog.mjs --check",
+    "models:refresh": "node scripts/sync-model-catalog.mjs --refresh"
   },
   "dependencies": {},
   "devDependencies": {
