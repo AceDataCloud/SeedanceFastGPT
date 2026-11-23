@@ -4,6 +4,13 @@ This independent plugin is maintained by **Ace Data Cloud** and uses your Ace ap
 
 Generate Seedance video and retrieve the result in a FastGPT workflow. [简体中文](README_zh_CN.md) · [Current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=seedancefastgpt_readme_pricing)
 
+## Model and reference inputs
+
+Use First frame image URL for image-to-video models; an optional Last frame image URL requires a first frame. Seedance 2.x/2.5 reference images, videos and audio have separate URL lists and are forwarded as their documented content types and roles. Select references supported by the chosen model.
+
+The Model field lists the current published models in its help text and still accepts exact model IDs as free text. Its catalog is generated from the public API contract. A daily workflow proposes a draft source update; it never publishes a package or runs generation. Review and release are separate. Existing tool IDs, text-generation defaults and task lookup behavior are preserved. No paid model execution was performed for this update.
+
+
 ## Quick start
 
 ### 1. Install
